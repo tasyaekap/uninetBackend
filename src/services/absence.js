@@ -3,13 +3,11 @@ const userModel = require('../models/User');
 require('dotenv').config()
 
 exports.findAbsence = async (match) => {
-    console.log(match)
     return absenceModel.findOne(match)
 }
 
 exports.findUserById = async (match) => {
     const res = await userModel.find(match);
-    console.log(res)
     return res
 };
 

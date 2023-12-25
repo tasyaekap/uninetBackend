@@ -7,7 +7,6 @@ exports.findUser = async (username) => {
 };
 
 exports.register = async (data) => {
-    console.log(data)
     const res = await userModel.create(data)
     return res
 };

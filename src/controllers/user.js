@@ -6,9 +6,7 @@ require('dotenv').config()
 exports.registerUser = async (req, res) => {
     try {
         data = req.body
-        console.log(data)
         let isExist = await userService.findUser(data.username)
-        console.log(isExist.length > 1)
         if (isExist.length > 1){
             res.status(500).json({ error: 'Username already registered' });
         }
@@ -16,7 +14,6 @@ exports.registerUser = async (req, res) => {
         data.password = await bcrypt.hashSync(data.password, 10);
 
         const reg = await userService.register(data);
-        console.log(reg)
         if(reg._id){
             res.status(200).json({ message: 'User sucess registered' });
         }
